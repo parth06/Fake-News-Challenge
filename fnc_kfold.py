@@ -42,7 +42,7 @@ if __name__ == "__main__":
     b = list()
     for stance in competition_dataset.stances:
         h.append(stance['Headline'])
-        b.append(competition_dataset.articles[stance['Body ID']])
+        b.append(stance['Body ID'])
     np.savetxt("headline.csv", h, delimiter=",", fmt='%s')
     np.savetxt("body_id.csv", b, delimiter=",", fmt='%s')
     X_competition, y_competition = generate_features(competition_dataset.stances, competition_dataset, "competition")
