@@ -38,6 +38,13 @@ if __name__ == "__main__":
 
     # Load the competition dataset
     competition_dataset = DataSet("competition_test")
+    h = list()    
+    b = list()
+    for stance in stances:
+        h.append(stance['Headline'])
+        b.append(dataset.articles[stance['Body ID']])
+    np.savetxt("headline.csv", h, delimiter=",", fmt='%s')
+    np.savetxt("body_id.csv", b, delimiter=",", fmt='%s')
     X_competition, y_competition = generate_features(competition_dataset.stances, competition_dataset, "competition")
 
     Xs = dict()
@@ -93,6 +100,7 @@ if __name__ == "__main__":
 
     #Run on competition dataset
     predicted = [LABELS[int(a)] for a in best_fold.predict(X_competition)]
+    np.savetxt("stance.csv", predicted, delimiter=",", fmt='%s')
     actual = [LABELS[int(a)] for a in y_competition]
 
     print("Scores on the test set")
