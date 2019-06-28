@@ -40,7 +40,7 @@ if __name__ == "__main__":
     competition_dataset = DataSet("competition_test")
     h = list()    
     b = list()
-    for stance in stances:
+    for stance in competition_dataset.stances:
         h.append(stance['Headline'])
         b.append(dataset.articles[stance['Body ID']])
     np.savetxt("headline.csv", h, delimiter=",", fmt='%s')
