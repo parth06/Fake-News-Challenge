@@ -37,5 +37,5 @@ test_bodyid = pd.read_csv("fnc-1/competition_test_bodies.csv")
 body_id = pd.concat([train_bodyid,test_bodyid])
 
 body_id.sort_values(by=['Body ID'],inplace=True)
-body_id.to_csv("data/body_id", encoding='utf-8', index=False)
+body_id.to_csv("data/body_id.csv", encoding='utf-8', index=False)
 body_id.shape
