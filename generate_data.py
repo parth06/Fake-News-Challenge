@@ -5,24 +5,24 @@ from utils.generate_test_splits import kfold_split,  get_stances_for_folds
 def get_dataFrame(data):
     d = list()
     for stance in data.stances:
-        s = stance['Stance']
-        # Relatedness
-        if s == 'unrelated':
-          a = s
-          b=None
+      s = stance['Stance']
+      # Relatedness
+      if s == 'unrelated':
+        a = s
+        b=None
+        c=None
+      else:
+        a = 'related'
+        ## Decision or Discuss
+        if s == 'discuss':
+          b = s
           c=None
         else:
-          a = 'related'
-          ## Decision or Discuss
-          if s == 'discuss':
-            b = s
-            c=None
-          else:
-            b = 'ANA'
-            c = s
+          b = 'ANA'
+          c = s
 
-        d.append([stance['Headline'],data.articles[stance['Body ID']],s,a,b,c])
-        df = pd.DataFrame(d,columns = ['Headline','Body','Stance','Relatedness','Discussion','AgreeNotagree'])
+      d.append([stance['Headline'],data.articles[stance['Body ID']],s,a,b,c])
+    df = pd.DataFrame(d,columns = ['Headline','Body','Stance','Relatedness','Discussion','AgreeNotagree'])
     return df
 
 #Training Dataset
