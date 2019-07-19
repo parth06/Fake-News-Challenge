@@ -2,7 +2,7 @@ import pandas as pd
 from utils.dataset import DataSet
 from utils.generate_test_splits import kfold_split,  get_stances_for_folds
 
-get_dataFrame(data):
+def get_dataFrame(data):
     d = list()
     for stance in data.stances:
         s = stance['Stance']
